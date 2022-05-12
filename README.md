@@ -1,7 +1,7 @@
 # Project Setup
 
 [![Production Workflow 1](https://github.com/SwapnilAryan97/is601_final/actions/workflows/prod.yml/badge.svg)](https://github.com/SwapnilAryan97/is601_final/actions/workflows/prod.yml)
-* [Production Deployment](final-proj-prod)
+* [Production Deployment](https://final-proj-prod.herokuapp.com/)
 
 [![Development Workflow 3.8](https://github.com/SwapnilAryan97/is601_final/actions/workflows/dev.yml/badge.svg)](https://github.com/SwapnilAryan97/is601_final/actions/workflows/dev.yml)
 * [Developmental Deployment](https://final-proj-dev.herokuapp.com/)
