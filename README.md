@@ -13,7 +13,6 @@ heroku development app/dyno and when you merge or push to master on github, it w
 heroku app/dyno.
 
 ### Instructions
-
 1. Clone this repo to your local (DO NOT FORK THIS REPO, IF YOU DO YOU HAVE TO ENABLE ACTIONS BEFORE ANYTHING RUNS)
 2. Create a new repo on your own Github account
 3. Change the origin by replacing it with your own new repo.  (Do not add a readme or any other file while creating the
