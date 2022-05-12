@@ -1,7 +1,7 @@
 # Project Setup
 
 [![Production Workflow 1](https://github.com/SwapnilAryan97/is601_final/actions/workflows/prod.yml/badge.svg)](https://github.com/SwapnilAryan97/is601_final/actions/workflows/prod.yml)
-* [Production Deployment](final-proj-prod)
+* [Production Deployment](https://final-proj-prod.herokuapp.com/)
 
 [![Development Workflow 3.8](https://github.com/SwapnilAryan97/is601_final/actions/workflows/dev.yml/badge.svg)](https://github.com/SwapnilAryan97/is601_final/actions/workflows/dev.yml)
 * [Developmental Deployment](https://final-proj-dev.herokuapp.com/)
@@ -13,7 +13,6 @@ heroku development app/dyno and when you merge or push to master on github, it w
 heroku app/dyno.
 
 ### Instructions
-
 1. Clone this repo to your local (DO NOT FORK THIS REPO, IF YOU DO YOU HAVE TO ENABLE ACTIONS BEFORE ANYTHING RUNS)
 2. Create a new repo on your own Github account
 3. Change the origin by replacing it with your own new repo.  (Do not add a readme or any other file while creating the
