@@ -8,7 +8,7 @@ from app import db
 
 def test_csv_upload(client, add_user, application):
     with application.app_context():
-        user = User('test@test.com', 'test1234')
+        user = User('test@test.com', 'testtest')
         filepath = 'tests/csvtest.csv'
         with open(filepath) as file:
             csv_file = csv.DictReader(file)

@@ -32,7 +32,7 @@ def application():
 def add_user(application):
     with application.app_context():
         #new record
-        user = User('test2@test', 'testtest2')
+        user = User('test2@test', 'testtest')
         user1 = User('test@test','testtest')
         db.session.add(user)
         db.session.add(user1)

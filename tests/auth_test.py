@@ -32,11 +32,11 @@ def test_login(application, client):
     """Test that a user login functionality works"""
     with application.app_context():
         # Add user to be able to test login
-        user = User('vt7@njit.edu', 'testtest')
+        user = User('test@test', 'testtest')
         db.session.add(user)
         db.session.commit()
 
-        res = client.post('/login', data=dict(email="vt7@njit.edu", password =generate_password_hash('testtest')), follow_redirects=True)
+        res = client.post('/login', data=dict(email="test@test", password =generate_password_hash('testtest')), follow_redirects=True)
         assert res.status_code == 400
         # assert b"Welcome" in res.data
 
@@ -49,7 +49,7 @@ def test_login(application, client):
 def test_registration(application, client):
     """this test is for to check registration process"""
     with application.app_context():
-        email = 'email@email.com'
+        email = 'test@test'
         password = 'testtest'
         user = User.query.filter_by(email=email).first()
         assert user is None
@@ -76,9 +76,9 @@ def test_upload_access(client):
 def test_authenticated_user(client,application, add_user):
     """Test user authentication"""
     with application.app_context():
-        user = User("vt7@njit.edu", "testtest")
+        user = User("test@test", "testtest")
         db.session.add(user)
         assert user.is_authenticated() == True
-        res = client.post('/login', data=dict(email="vt7@njit.edu", password='testtest'), follow_redirects=True)
+        res = client.post('/login', data=dict(email="test@test", password='testtest'), follow_redirects=True)
         assert user.is_active() == True
 
