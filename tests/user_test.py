@@ -6,7 +6,7 @@ from faker import Faker
 from sqlalchemy.sql import functions
 
 
-def test_adding_user(application):
+def test_add_user(application):
     log = logging.getLogger("myApp")
     with application.app_context():
         assert db.session.query(User).count() == 0
@@ -17,7 +17,7 @@ def test_adding_user(application):
         assert db.session.query(User).count() == 1
 
 
-def test_accessing_user(application, add_user):
+def test_access_user(application, add_user):
     with application.app_context():
         user = User.query.filter_by(email='test@test').first()
         assert db.session.query(User).count() == 2
@@ -26,14 +26,14 @@ def test_accessing_user(application, add_user):
         assert user.active == True
 
 
-def test_inital_balance(application, add_user):
+def test_first_balance(application, add_user):
     with application.app_context():
         user = User.query.filter_by(email='test@test').first()
         assert user.inital_balance == 0
         assert user.get_balance() == 0
 
 
-def test_adding_transactions(application, add_user):
+def test_add_transactions(application, add_user):
     with application.app_context():
         user = User.query.filter_by(email='test@test').first()
         user.transactions = [Transaction(3000, 'CREDIT'), Transaction(-2000, 'DEBIT')]
@@ -43,7 +43,7 @@ def test_adding_transactions(application, add_user):
         assert db.session.query(Transaction).count() == 2
 
 
-def test_balance_after_transactions(application, add_user):
+def test_balance_after_transaction(application, add_user):
     with application.app_context():
         user = User.query.filter_by(email='test@test').first()
         user.transactions = [Transaction(3000, 'CREDIT'), Transaction(-2000, 'DEBIT')]
@@ -55,7 +55,7 @@ def test_balance_after_transactions(application, add_user):
         assert result == 1000
 
 
-def test_adding_different_user_transactions(application, add_user):
+def test_adding_different_user_transaction(application, add_user):
     with application.app_context():
         user = User.query.filter_by(email='test@test').first()
         user1 = User.query.filter_by(email='test2@test').first()
@@ -68,15 +68,6 @@ def test_adding_different_user_transactions(application, add_user):
         assert len(user1.transactions) == 3
         # Check total transactions in tabel
         assert db.session.query(Transaction).count() == 5
-
-
-def test_deleting_user(application, add_user):
-    with application.app_context():
-        user = User.query.filter_by(email='test@test').first()
-        user.transactions = [Transaction(3000, 'CREDIT'), Transaction(-2000, 'DEBIT')]
-        assert db.session.query(Transaction).count() == 2
-        db.session.delete(user)
-        assert db.session.query(Transaction).count() == 0
 
 
 def test_changing_user_transactions_check_balance(application, add_user):
@@ -96,3 +87,12 @@ def test_changing_user_transactions_check_balance(application, add_user):
         assert len(user.transactions) == 3
         result = db.session.query(functions.sum(Transaction.amount)).scalar()
         assert result == 4000
+
+
+def test_delete_user(application, add_user):
+    with application.app_context():
+        user = User.query.filter_by(email='test@test').first()
+        user.transactions = [Transaction(3000, 'CREDIT'), Transaction(-2000, 'DEBIT')]
+        assert db.session.query(Transaction).count() == 2
+        db.session.delete(user)
+        assert db.session.query(Transaction).count() == 0
